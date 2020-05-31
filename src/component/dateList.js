@@ -5,7 +5,7 @@ const DateList = (props) => {
   const { data } = props;
   const list = data.map((info) => (
     <>
-      <Date key={info.date} info={info} />
+      <Date key={info.id} info={info} />
     </>
   ));
 
@@ -14,21 +14,25 @@ const DateList = (props) => {
       <style>
         {`
           .dateContainer {
-            display: inline-block;
-            position: relative;
-            left: 45px;
+            width: 100%;
+            height: 95%;
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-columns: repeat(7, 1fr);
           }
+
+          .not-this-month {color: #4b4b4b;}
+
+          .sun {color: #f35252;}
+          .sat {color: #5c8ef4;}
 
           .box {
             margin: 5px;
-            display: inline-block;
-            width: 180px;
-            height: 120px;
-            background-color: #c6ede8;
+            background-color: #ffffff;
             border-radius: 15px;
-            font-family: "Noto Sans KR", sans-serif;
-            font-size: 35px;
-            font-weight: 500;
+            font-family: "Jua", sans-serif;
+            font-size: 25px;
+            min-width: 10px;
           }
 
           .box-margin {

@@ -1,26 +1,32 @@
-import React from 'react';
+import React from "react";
 
 const Date = (props) => {
-    const {
-      date, icon
-    } = props.info;
-    
-    return (
+  const { date, icon, id, thisMonth, day } = props.info;
 
-      <>
-        <div className="box">
-          <div className="box-margin">{date}</div>
-          <div className="box-margin">{icon}</div>
+  return (
+    <>
+      <div className={"box num" + id}>
+        <div
+          className={
+            "box-margin" + 
+            (thisMonth === 1 ? "" : " not-this-month") +
+            (day === "Sun" ? " sun" : day === "Sat" ? " sat" : "")
+          }
+        >
+          {date}
         </div>
-      </>
-    );
+        <div className="box-margin">{icon}</div>
+      </div>
+    </>
+  );
 };
 
 Date.defaultProps = {
   info: {
     date: 0,
-    icon: '',
-  }
-}
+    icon: "",
+    id: 0,
+  },
+};
 
 export default Date;
