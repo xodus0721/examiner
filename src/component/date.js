@@ -1,14 +1,14 @@
 import React from "react";
 
 const Date = (props) => {
-  const { date, icon, id, thisMonth, day } = props.info;
+  const { id, icon, date, thisMonth, day } = props.info;
 
   return (
     <>
       <div className={"box num" + id}>
         <div
           className={
-            "box-margin" + 
+            "box-margin" +
             (thisMonth === 1 ? "" : " not-this-month") +
             (day === "Sun" ? " sun" : day === "Sat" ? " sat" : "")
           }
@@ -23,9 +23,11 @@ const Date = (props) => {
 
 Date.defaultProps = {
   info: {
+    id: 0,
     date: 0,
     icon: "",
-    id: 0,
+    thisMonth: 0,
+    day: "",
   },
 };
 

@@ -21,8 +21,6 @@ const weekNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 let year = d.getFullYear();
 
-let monthName = monthNames[d.getMonth()];
-
 let monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 switch (!(year % (year % 25 ? 4 : 16))) {
@@ -47,17 +45,17 @@ const bufMaker = (month) => {
 
   for (let i = 0; i < firstDay; i++)
     tempBuf[i] = {
+      id: i + 1,
       date: monthDay[month - 2] - firstDay + i + 1,
       icon: "",
-      id: i + 1,
       thisMonth: 0,
       day: "",
     };
   for (let i = firstDay; i < monthDay[month - 1] + firstDay; i++)
     tempBuf[i] = {
+      id: i + 1,
       date: i - (firstDay - 1),
       icon: "",
-      id: i + 1,
       thisMonth: 1,
       day:
         weekNames[
@@ -66,14 +64,16 @@ const bufMaker = (month) => {
           ).getDay()
         ],
     };
+    let num = 0;
   for (let i = monthDay[month - 1] + firstDay; i < 42; i++) {
     tempBuf[i] = {
-      date: i - monthDay[month - 1] - firstDay + 1,
-      icon: "",
       id: i + 1,
+      date: num+ 1,
+      icon: "",
       thisMonth: 0,
       day: "",
     };
+    num++;
   }
 
   return tempBuf;
@@ -83,15 +83,18 @@ const bufMaker = (month) => {
 const Calender = () => {
   const [month, setMonth] = useState("");
   const [buf, setBuf] = useState([]);
+  const [monthName, setMonthName] = useState("");
 
   // 컴포넌트가 마운트될때 실행
   useEffect(() => {
     setMonth(getNowMonth());
-    setBuf(bufMaker(d.getMonth() + 1));
+    setBuf(bufMaker(getNowMonth()));
+    setMonthName(monthNames[d.getMonth()]);
   }, []);
 
   useEffect(() => {
     setBuf(bufMaker(month));
+    setMonthName(monthNames[month - 1]);
   }, [month]);
 
   const monthIncrease = () => {

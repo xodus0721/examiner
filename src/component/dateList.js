@@ -21,7 +21,7 @@ const DateList = (props) => {
             grid-template-columns: repeat(7, 1fr);
           }
 
-          .not-this-month {color: #4b4b4b;}
+          .not-this-month {color: #6C6C6C;}
 
           .sun {color: #f35252;}
           .sat {color: #5c8ef4;}

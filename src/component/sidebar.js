@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function Sidebar() {
+const Sidebar = (props) => {
+  const { name } = props;
   const [checkClicked, setCheckClicked] = useState(0);
   const handleClicked = () => {
     checkClicked === 1
@@ -14,7 +15,6 @@ function Sidebar() {
 
   useEffect(() => {
     setCheckClicked(checkClicked);
-    console.log(checkClicked);
   }, [checkClicked]);
 
   return (
@@ -130,13 +130,13 @@ function Sidebar() {
           <li className="nav-item">
             <a className="nav-link" href="/">
               <img src="./setting.svg" alt="setting" />
-              <span className="link-text">Hello 태연</span>
+              <span className="link-text">Hello {name}</span>
             </a>
           </li>
         </ul>
       </nav>
     </div>
   );
-}
+};
 
 export default Sidebar;

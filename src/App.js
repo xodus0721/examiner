@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Calender from "./component/calender";
 import Dday from "./component/Dday";
 import Sidebar from "./component/sidebar";
 
-let name = "태연";
 const App = () => {
+  const [name, setName] = useState("누구누구");
+  useEffect(() => {
+    setName("태연");
+  }, []);
+
   return (
     <>
       <style>
@@ -19,11 +23,11 @@ const App = () => {
             .main-item:nth-child(3) {flex-grow:4;}
         `}
       </style>
-        <div className="main">
-          <Sidebar />
-          <Calender />
-          <Dday name={name}/>
-        </div>
+      <div className="main">
+        <Sidebar name={name}/>
+        <Calender />
+        <Dday />
+      </div>
     </>
   );
 };
