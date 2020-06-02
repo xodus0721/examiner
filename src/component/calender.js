@@ -68,7 +68,7 @@ const bufMaker = (month) => {
     };
   for (let i = monthDay[month - 1] + firstDay; i < 42; i++) {
     tempBuf[i] = {
-      date: i - monthDay[month] - firstDay,
+      date: i - monthDay[month - 1] - firstDay + 1,
       icon: "",
       id: i + 1,
       thisMonth: 0,
@@ -86,7 +86,6 @@ const Calender = () => {
 
   // 컴포넌트가 마운트될때 실행
   useEffect(() => {
-    console.log("mount!");
     setMonth(getNowMonth());
     setBuf(bufMaker(d.getMonth() + 1));
   }, []);
