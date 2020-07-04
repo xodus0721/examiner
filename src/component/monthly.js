@@ -64,11 +64,11 @@ const bufMaker = (month) => {
           ).getDay()
         ],
     };
-    let num = 0;
+  let num = 0;
   for (let i = monthDay[month - 1] + firstDay; i < 42; i++) {
     tempBuf[i] = {
       id: i + 1,
-      date: num+ 1,
+      date: num + 1,
       icon: "",
       thisMonth: 0,
       day: "",
@@ -80,7 +80,7 @@ const bufMaker = (month) => {
 };
 
 // 함수형 컴포넌트 내부
-const Calender = () => {
+const Monthly = () => {
   const [month, setMonth] = useState("");
   const [buf, setBuf] = useState([]);
   const [monthName, setMonthName] = useState("");
@@ -146,10 +146,12 @@ const Calender = () => {
             font-size: 35px;
           }
 
-          .cal-item:nth-child(1), .cal-item:nth-child(2) {flex-grow: 1;}
-          .cal-item:nth-child(3) {flex-grow: 30;}
+          .cal-item:nth-child(1), .cal-item:nth-child(2) {
+            flex-grow: 1;
+          }
+          .cal-item:nth-child(3) {flex-grow: 20;}
 
-          .move-button {
+          .button {
             margin: 0 10px 0 10px;
             border: 0;
             color: #fffff3;
@@ -160,13 +162,13 @@ const Calender = () => {
       </style>
       <div className="calander-board">
         <div className="head center cal-item">
-          <button className="move-button" onClick={monthDecrease}>
+          <button className="button" onClick={monthDecrease}>
             <img src="/left-button.png" alt="left-button" />
           </button>
           <span className="month">{year}</span>
           <span className="month">{month >= 10 ? month : "0" + month}</span>
           <span className="month name">{monthName}</span>
-          <button className="move-button" onClick={monthIncrease}>
+          <button className="button" onClick={monthIncrease}>
             <img src="/right-button.png" alt="right-button" />
           </button>
         </div>
@@ -187,4 +189,4 @@ const Calender = () => {
   );
 };
 
-export default Calender;
+export default Monthly;

@@ -4,9 +4,7 @@ import Date from "./date";
 const DateList = (props) => {
   const { data } = props;
   const list = data.map((info) => (
-    <>
       <Date key={info.id} info={info} />
-    </>
   ));
 
   return (
@@ -28,7 +26,7 @@ const DateList = (props) => {
 
           .box {
             margin: 5px;
-            background-color: #ffffff;
+            border: 3px solid #5D94FF;
             border-radius: 15px;
             font-family: "Jua", sans-serif;
             font-size: 25px;

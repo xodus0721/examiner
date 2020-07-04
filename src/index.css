@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background-color:#ADB8F7;
+  background-color: #ffffff;
   box-sizing: border-box;
   font-size: 25px;
 }
 
-html, body, button {
+html,
+body,
+button {
   cursor: url(/icon.svg), auto;
 }
 

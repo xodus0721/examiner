@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Calender from "./component/calender";
-import Dday from "./component/Dday";
+import Monthly from "./component/monthly";
+import ScheduleList from "./component/scheduleList";
 import Sidebar from "./component/sidebar";
 
 const App = () => {
   const [name, setName] = useState("누구누구");
+
   useEffect(() => {
     setName("태연");
   }, []);
@@ -24,9 +25,9 @@ const App = () => {
         `}
       </style>
       <div className="main">
-        <Sidebar name={name}/>
-        <Calender />
-        <Dday />
+        <Sidebar name={name} />
+        <Monthly />
+        <ScheduleList />
       </div>
     </>
   );
