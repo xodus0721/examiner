@@ -1,0 +1,14 @@
+.main {
+  height: 100vh;
+  display: flex;
+}
+
+.main-item:nth-child(1) {
+  flex-grow: 0.3;
+}
+.main-item:nth-child(2) {
+  flex-grow: 12;
+}
+.main-item:nth-child(3) {
+  flex-grow: 4;
+}

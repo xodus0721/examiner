@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DateList from "./dateList";
+import "../stylesheet/monthly.scss";
 
 let d = new Date();
 
@@ -107,59 +108,6 @@ const Monthly = () => {
 
   return (
     <div className="main-item">
-      <style>
-        {`
-          .D-day {
-            background-color: blue;
-          }
-
-          .calander-board {
-            margin: 0 20px 0 20px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          .center {justify-content: center;}
-
-          .month {
-            text-align: center;
-            margin: 0 10px 0 10px;
-            font-family: "Jua", sans-serif;
-            font-size: 70px;
-          }
-
-          .name {
-            font-size: 40px;
-            padding-top: 25px;
-          }
-
-          .head {
-            display: flex;
-          }
-
-          .weekName {
-            text-align: center;
-            margin: 0 5px 0 5px;
-            flex: 1 1 180px;
-            font-family: "Jua", sans-serif;
-            font-size: 35px;
-          }
-
-          .cal-item:nth-child(1), .cal-item:nth-child(2) {
-            flex-grow: 1;
-          }
-          .cal-item:nth-child(3) {flex-grow: 20;}
-
-          .button {
-            margin: 0 10px 0 10px;
-            border: 0;
-            color: #fffff3;
-            background-color: rgba(0, 0, 0, 0);
-            text-align: center;
-          }
-        `}
-      </style>
       <div className="calander-board">
         <div className="head center cal-item">
           <button className="button" onClick={monthDecrease}>

@@ -4,7 +4,6 @@ const Date = (props) => {
   const { id, icon, date, thisMonth, day } = props.info;
 
   return (
-    <>
       <div className={"box num" + id}>
         <div
           className={
@@ -17,7 +16,6 @@ const Date = (props) => {
         </div>
         <div className="box-margin">{icon}</div>
       </div>
-    </>
   );
 };
 

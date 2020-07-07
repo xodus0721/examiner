@@ -1,172 +1,47 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useCallback } from "react";
 import Schedule from "./schedule";
+import "../stylesheet/scheduleList.scss";
 
-const ScheduleList = () => {
-  const [schedules, setSchedules] = useState([
-    {
-      id: 1,
-      leftDay: 5,
-      content: "공수 수행",
-    },
-    {
-      id: 2,
-      leftDay: 9,
-      content: "영어 수행",
-    },
-  ]);
-
+const ScheduleList = ({ schedules, onInsert, onRemove }) => {
+  const [leftDay, setLeftDay] = useState("");
+  const [content, setContent] = useState("");
   const [visible, setVisible] = useState(null);
 
-  const nextId = useRef(3);
-
-  const list = schedules.map((info) => <Schedule key={info.id} info={info} />);
-
-  const addSchedule = () => {
-    if(visible === false || visible === null) {
-      setVisible(!visible);
-    }
+  const inputAppear = () => {
+    setVisible(!visible);
   };
 
-  const deleteSchedule = () => {};
+  const onChangeLeftDay = useCallback((e) => {
+    setLeftDay(e.target.value);
+  }, []);
 
-  const inputDisappear = () => {
-    if(visible === true) {
-      setVisible(!visible);
-    }
-  }
+  const onChangeContent = useCallback((e) => {
+    setContent(e.target.value);
+  }, []);
+
+  const addSchedule = useCallback(
+    (e) => {
+      if (visible === true) {
+        setVisible(!visible);
+      }
+      onInsert(leftDay, content);
+      setLeftDay("");
+      setContent("");
+      e.preventDefault();
+    },
+    [onInsert, leftDay, content, visible]
+  );
 
   return (
     <div className="main-item">
-      <style>
-        {`
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-          
-          @keyframes fadeOut {
-            0% {
-              opacity: 1;
-            }
-            100% {
-              opacity: 0;
-              visibility: hidden;
-            }
-          }
-          
-          .schedule-board {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-          }
-          
-          .compo-name {
-            margin: 0 10px 0 10px;
-            font-family: "Jua", sans-serif;
-            font-size: 60px;
-            text-align: center;
-          }
-          
-          .head {
-            width: 100%;
-            justify-content: center;
-            margin-bottom: 10px;
-          }
-          
-          .head-item {
-            margin: 3%;
-            flex-shrink: 0;
-          }
-          
-          .input-schedule {
-            display: flex;
-          }
-          
-          .input-title {
-            margin: 0 0 0.2em 0;
-          }
-          
-          .input-content {
-            margin: 1rem 1rem 1rem 1rem;
-            width: 20vw;
-            height: 5vh;
-            text-align: center;
-            border: 3px solid black;
-            border-radius: 10px;
-          }
-          
-          .input-schedule input:nth-child(1) {
-            width: 15vw;
-            height: 5vh;
-          }
-          
-          .input-schedule input:nth-child(2) {
-            width: 25vw;
-            height: 5vh;
-          }
-          
-          .input-font {
-            font-family: "Jua", sans-serif;
-            font-size: calc(1.2vh + 1.2vw);
-          }
-          
-          .input-window {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #ffffff;
-            border: 3px solid black;
-            border-radius: 3rem;
-            z-index: 1;
-            width: 50%;
-            max-width: 1000px;
-            height: 30%;
-            max-height: 300px;
-            position: absolute;
-            top: 36vh;
-            right: 24vw;
-          }
-          
-          .input-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .setting-button {
-            margin-left: 42vw;
-            width: 5vw;
-            height: 5vh;
-            background-color: #ffffff;
-            border: 3px solid black;
-            border-radius: 0.5em;
-          }
-          
-          .input-appear {
-            visibility: visible;
-            animation: fadeIn 2s;
-          }
-          
-          .input-disappear {
-            animation: fadeOut 2s both;
-          }
-
-          .input-null {
-            visibility: hidden;
-          }
-        `}
-      </style>
       <div
         className={
-          "input-window " + (visible === null ? "input-null" :  (visible ? "input-appear" : "input-disappear"))
+          "input-window " +
+          (visible === null
+            ? "input-null"
+            : visible
+            ? "input-appear"
+            : "input-disappear")
         }
       >
         <div className="input-column">
@@ -176,32 +51,37 @@ const ScheduleList = () => {
               className="input-content input-font"
               type="text"
               placeholder="input left day"
+              value={leftDay}
+              onChange={onChangeLeftDay}
             />
             <input
               className="input-content input-font"
               type="text"
               placeholder="input your schedule"
+              value={content}
+              onChange={onChangeContent}
             />
           </div>
         </div>
         <input
           className="setting-button input-font"
-          type="button"
+          type="submit"
           value="set"
-          onClick={inputDisappear}
+          onClick={addSchedule}
         />
       </div>
       <div className="schedule-board">
         <div className="head">
           <span className="compo-name head-item">Schedule</span>
-          <button className="head-item button" onClick={addSchedule}>
+          <button className="head-item button" onClick={inputAppear}>
             <img src="plus.svg" alt="plus" />
           </button>
-          <button className="head-item button">
-            <img src="delete.svg" alt="delete" onClick={deleteSchedule} />
-          </button>
         </div>
-        <div>{list}</div>
+        <div>
+          {schedules.map((info) => (
+            <Schedule key={info.id} info={info} onRemove={onRemove} />
+          ))}
+        </div>
       </div>
     </div>
   );
