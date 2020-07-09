@@ -19,7 +19,7 @@
 
 .name {
   font-size: calc(1.5vh + 1.5vw);
-  padding-top: 3vh;
+  padding-top: 2vh;
 }
 
 .head {
@@ -48,4 +48,9 @@
   color: #fffff3;
   background-color: rgba(0, 0, 0, 0);
   text-align: center;
+
+  img {
+    width: 2vw;
+    height: 4vh;
+  }
 }

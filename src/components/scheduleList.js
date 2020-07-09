@@ -6,6 +6,7 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
   const [leftDay, setLeftDay] = useState("");
   const [content, setContent] = useState("");
   const [visible, setVisible] = useState(null);
+  const [alert, setAlert] = useState(null);
 
   const inputAppear = () => {
     setVisible(!visible);
@@ -21,19 +22,48 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
 
   const addSchedule = useCallback(
     (e) => {
-      if (visible === true) {
-        setVisible(!visible);
+      if (leftDay > 0) {
+        if (visible === true) {
+          setVisible(!visible);
+        }
+        onInsert(leftDay, content);
+        setLeftDay("");
+        setContent("");
+        e.preventDefault();
+      } else {
+        setAlert(!alert);
       }
-      onInsert(leftDay, content);
-      setLeftDay("");
-      setContent("");
-      e.preventDefault();
     },
-    [onInsert, leftDay, content, visible]
+    [onInsert, leftDay, content, visible, alert]
+  );
+
+  const confirmAlert = useCallback(
+    (e) => {
+      setAlert(!alert);
+    },
+    [alert]
   );
 
   return (
     <div className="schedule-board">
+      <div
+        className={
+          "alert-window " +
+          (alert === null
+            ? "input-null"
+            : alert
+            ? "input-appear"
+            : "input-disappear")
+        }
+      >
+        <span className="input-font">input only positive number!</span>
+        <input
+          className="button-style input-font confirm-button"
+          type="submit"
+          value="Confirm"
+          onClick={confirmAlert}
+        />
+      </div>
       <div
         className={
           "input-window " +
@@ -49,7 +79,8 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
           <div className="input-schedule">
             <input
               className="input-content input-font"
-              type="text"
+              type="number"
+              min="1"
               placeholder="input left day"
               value={leftDay}
               onChange={onChangeLeftDay}
@@ -64,9 +95,9 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
           </div>
         </div>
         <input
-          className="setting-button input-font"
+          className="button-style setting-button input-font"
           type="submit"
-          value="set"
+          value="Set"
           onClick={addSchedule}
         />
       </div>
