@@ -1,8 +1,9 @@
 .calander-board {
-  margin: 0 20px 0 20px;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  width: 70%;
+  margin-right: 2vw;
 }
 
 .center {
@@ -11,14 +12,14 @@
 
 .month {
   text-align: center;
-  margin: 0 10px 0 10px;
+  margin: 0 0.5vw 0 0.5vw;
   font-family: "Jua", sans-serif;
-  font-size: 70px;
+  font-size: calc(2.8vh + 2.8vw);
 }
 
 .name {
-  font-size: 40px;
-  padding-top: 25px;
+  font-size: calc(1.5vh + 1.5vw);
+  padding-top: 3vh;
 }
 
 .head {
@@ -27,10 +28,10 @@
 
 .weekName {
   text-align: center;
-  margin: 0 5px 0 5px;
+  margin: 0 0.2vw 0 0.2vw;
   flex: 1 1 180px;
   font-family: "Jua", sans-serif;
-  font-size: 35px;
+  font-size: calc(1.2vh + 1.2vw);
 }
 
 .cal-item:nth-child(1),
@@ -42,7 +43,7 @@
 }
 
 .button {
-  margin: 0 10px 0 10px;
+  margin: 0 0.5vw 0 0.5vw;
   border: 0;
   color: #fffff3;
   background-color: rgba(0, 0, 0, 0);

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "../stylesheet/sidebar.scss";
+import "../stylesheets/sidebar.scss";
 
 const Sidebar = (props) => {
   const { name } = props;
-  const [checkClicked, setCheckClicked] = useState(0);
+  const [checkClicked, setCheckClicked] = useState(false);
+
   const handleClicked = () => {
-    checkClicked === 1
-      ? setCheckClicked(checkClicked - 1)
-      : setCheckClicked(checkClicked + 1);
+    setCheckClicked(!checkClicked);
   };
 
   useEffect(() => {
@@ -20,10 +19,10 @@ const Sidebar = (props) => {
 
   return (
     <div className="main-item">
-      <nav className={"nav" + (checkClicked === 1 ? " width-increase" : "")}>
+      <nav className={"nav " + (checkClicked ? "width-increase" : "")}>
         <ul className="nav-ul">
           <li className="nav-item">
-            <button className="menu-button" onClick={handleClicked}>
+            <button className="nav-link menu-button" onClick={handleClicked}>
               <img src="./menu.svg" alt="menu" />
             </button>
           </li>

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Schedule from "./schedule";
-import "../stylesheet/scheduleList.scss";
+import "../stylesheets/scheduleList.scss";
 
 const ScheduleList = ({ schedules, onInsert, onRemove }) => {
   const [leftDay, setLeftDay] = useState("");
@@ -33,7 +33,7 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
   );
 
   return (
-    <div className="main-item">
+    <div className="schedule-board">
       <div
         className={
           "input-window " +
@@ -70,7 +70,7 @@ const ScheduleList = ({ schedules, onInsert, onRemove }) => {
           onClick={addSchedule}
         />
       </div>
-      <div className="schedule-board">
+      <div className="schedule-list">
         <div className="head">
           <span className="compo-name head-item">Schedule</span>
           <button className="head-item button" onClick={inputAppear}>

@@ -1,6 +1,6 @@
 import React from "react";
 import Date from "./date";
-import "../stylesheet/dateList.scss";
+import "../stylesheets/dateList.scss";
 
 const DateList = (props) => {
   const { data } = props;

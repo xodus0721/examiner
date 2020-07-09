@@ -3,12 +3,14 @@
   display: flex;
 }
 
+.monthly {
+  display: flex;
+}
+
 .main-item:nth-child(1) {
-  flex-grow: 0.3;
+  flex-grow: 1;
 }
+
 .main-item:nth-child(2) {
-  flex-grow: 12;
-}
-.main-item:nth-child(3) {
-  flex-grow: 4;
+  flex-grow: 15;
 }

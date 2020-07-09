@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DateList from "./dateList";
-import "../stylesheet/monthly.scss";
+import DateList from "../components/dateList";
+import ScheduleList from "../components/scheduleList";
+import "../stylesheets/monthly.scss";
 
 let d = new Date();
 
@@ -18,7 +19,7 @@ const monthNames = [
   "November",
   "December",
 ];
-const weekNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const weekNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
 let year = d.getFullYear();
 
@@ -81,7 +82,7 @@ const bufMaker = (month) => {
 };
 
 // 함수형 컴포넌트 내부
-const Monthly = () => {
+const Monthly = ({ schedules, onInsert, onRemove }) => {
   const [month, setMonth] = useState("");
   const [buf, setBuf] = useState([]);
   const [monthName, setMonthName] = useState("");
@@ -107,7 +108,7 @@ const Monthly = () => {
   };
 
   return (
-    <div className="main-item">
+    <div className="main-item monthly">
       <div className="calander-board">
         <div className="head center cal-item">
           <button className="button" onClick={monthDecrease}>
@@ -133,6 +134,11 @@ const Monthly = () => {
           <DateList data={buf} />
         </div>
       </div>
+      <ScheduleList
+        schedules={schedules}
+        onInsert={onInsert}
+        onRemove={onRemove}
+      />
     </div>
   );
 };

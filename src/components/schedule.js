@@ -5,7 +5,7 @@ const schedule = (props) => {
   const deleteSchedule = props.onRemove;
   return (
     <div className="frame">
-      <span className="item">{leftDay} days left</span>
+      <span className="item">D-{leftDay}</span>
       <span className="item">{content}</span>
       <button className="head-item button">
         <img src="delete.svg" alt="delete" onClick={() => deleteSchedule(id)} />

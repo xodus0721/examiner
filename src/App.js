@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Monthly from "./component/monthly";
-import ScheduleList from "./component/scheduleList";
-import Sidebar from "./component/sidebar";
+import Monthly from "./routes/monthly";
+import Sidebar from "./components/sidebar";
 import "./App.scss";
 
 const App = () => {
@@ -36,11 +35,10 @@ const App = () => {
   }, []);
 
   return (
-      <div className="main">
-        <Sidebar name={name} />
-        <Monthly />
-        <ScheduleList schedules={schedules} onInsert={onInsert} onRemove={onRemove} />
-      </div>
+    <div className="main">
+      <Sidebar name={name} />
+      <Monthly schedules={schedules} onInsert={onInsert} onRemove={onRemove} />
+    </div>
   );
 };
 
