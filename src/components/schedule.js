@@ -1,6 +1,6 @@
 import React from "react";
 
-const schedule = (props) => {
+const Schedule = (props) => {
   const { id, leftDay, content } = props.info;
   const deleteSchedule = props.onRemove;
   return (
@@ -14,4 +14,4 @@ const schedule = (props) => {
   );
 };
 
-export default schedule;
+export default Schedule;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../stylesheets/sidebar.scss";
 
 const Sidebar = (props) => {
@@ -27,40 +28,40 @@ const Sidebar = (props) => {
             </button>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               <img src="./monthly.svg" alt="monthly" />
               <span className="link-text">Monthly</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/Weekly">
               <img src="./weekly.svg" alt="weekly" />
               <span className="link-text">Weekly</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/Daily">
               <img src="./daily.svg" alt="daily" />
               <span className="link-text">Daily</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/Comment">
               <img src="./comment.svg" alt="comment" />
               <span className="link-text">Comment</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/Achievement">
               <img src="./achievement.svg" alt="achievement" />
               <span className="link-text">Achievement</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/Setting">
               <img src="./setting.svg" alt="setting" />
               <span className="link-text">Hello {name}</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

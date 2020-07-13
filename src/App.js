@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import Monthly from "./routes/monthly";
+import Weekly from "./routes/weekly";
+import Daily from "./routes/daily";
+import Comment from "./routes/comment";
+import Achievement from "./routes/achievement";
+import Setting from "./routes/setting";
+import Error from "./routes/404";
+
 import Sidebar from "./components/sidebar";
 import "./App.scss";
 
@@ -35,10 +44,30 @@ const App = () => {
   }, []);
 
   return (
-    <div className="main">
-      <Sidebar name={name} />
-      <Monthly schedules={schedules} onInsert={onInsert} onRemove={onRemove} />
-    </div>
+    <BrowserRouter>
+      <div className="main">
+        <Sidebar name={name} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Monthly
+                schedules={schedules}
+                onInsert={onInsert}
+                onRemove={onRemove}
+              />
+            )}
+          />
+          <Route exact path="/Weekly" render={() => <Weekly />} />
+          <Route path="/Daily" render={() => <Daily />} />
+          <Route path="/Comment" render={() => <Comment />} />
+          <Route path="/Achievement" render={() => <Achievement />} />
+          <Route path="/Setting" render={() => <Setting />} />
+          <Route path="*" render={() => <Error />} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 
