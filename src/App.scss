@@ -7,6 +7,11 @@
   display: flex;
 }
 
+.weekly {
+  display: flex;
+  flex-direction: column;
+}
+
 .main-item:nth-child(1) {
   flex-grow: 1;
 }

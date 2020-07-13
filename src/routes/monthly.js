@@ -22,6 +22,8 @@ const monthNames = [
 const weekNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
 let year = d.getFullYear();
+const today = d.getDate();
+const todaysMonth = d.getMonth() + 1;
 
 let monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -51,7 +53,10 @@ const bufMaker = (month) => {
       date: monthDay[month - 2] - firstDay + i + 1,
       icon: "",
       thisMonth: 0,
-      day: "",
+      weekend: "",
+      today: today,
+      month: month,
+      todaysMonth: todaysMonth,
     };
   for (let i = firstDay; i < monthDay[month - 1] + firstDay; i++)
     tempBuf[i] = {
@@ -59,12 +64,15 @@ const bufMaker = (month) => {
       date: i - (firstDay - 1),
       icon: "",
       thisMonth: 1,
-      day:
+      weekend:
         weekNames[
           new Date(
             `${year}-${month >= 10 ? month : "0" + month}-${i - (firstDay - 1)}`
           ).getDay()
         ],
+      today: today,
+      month: month,
+      todaysMonth: todaysMonth,
     };
   let num = 0;
   for (let i = monthDay[month - 1] + firstDay; i < 42; i++) {
@@ -73,7 +81,10 @@ const bufMaker = (month) => {
       date: num + 1,
       icon: "",
       thisMonth: 0,
-      day: "",
+      weekend: "",
+      today: today,
+      month: month,
+      todaysMonth: todaysMonth,
     };
     num++;
   }

@@ -42,8 +42,9 @@
 
 .compo-name {
   margin: 0 0.3vw 0 0.3vw;
-  font-family: "Jua", sans-serif;
-  font-size: calc(2.8vh + 2.8vw);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: calc(2.5vh + 2.5vw);
   text-align: center;
 }
 
@@ -73,7 +74,7 @@
   height: 5vh;
   text-align: center;
   border: calc(0.1vw + 0.1vh) solid black;
-  border-radius: calc(0.5vw + 0.5vh);
+  border-radius: calc(0.2vw + 0.2vh);
 }
 
 .input-schedule input:nth-child(1) {
@@ -87,8 +88,9 @@
 }
 
 .input-font {
-  font-family: "Jua", sans-serif;
-  font-size: calc(1.2vh + 1.2vw);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: calc(1vh + 1vw);
 }
 
 .input-window {
@@ -97,7 +99,7 @@
   justify-content: center;
   background-color: #ffffff;
   border: calc(0.1vw + 0.1vh) solid black;
-  border-radius: calc(1.5vw + 1.5vh);
+  border-radius: calc(1vw + 1vh);
   z-index: 1;
   width: 50%;
   max-width: 1000px;
@@ -119,7 +121,7 @@
   height: 5vh;
   background-color: #ffffff;
   border: calc(0.1vw + 0.1vh) solid black;
-  border-radius: calc(1vw + 1vh);
+  border-radius: calc(0.5vw + 0.5vh);
 }
 
 .setting-button {
@@ -155,7 +157,8 @@
 
 .item {
   padding: 0.8vh;
-  font-family: "Jua", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
   font-size: calc(1vh + 1vw);
 }
 
@@ -166,7 +169,7 @@
   align-items: center;
   background-color: #ffffff;
   border: calc(0.1vw + 0.1vh) solid black;
-  border-radius: calc(1.5vw + 1.5vh);
+  border-radius: calc(1vw + 1vh);
   z-index: 2;
   width: 30%;
   max-width: 600px;

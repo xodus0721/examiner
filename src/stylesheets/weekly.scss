@@ -1,0 +1,34 @@
+.planner-container {
+  margin-left: 5vh;
+}
+
+.planner-board {
+  height: 40vh;
+  margin: 0 2vw 5vh 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weekly-header {
+  font-size: calc(2vh + 2vw);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
+}
+
+.plan-template {
+  border: calc(0.1vh + 0.1vw) solid #5d94ff;
+  border-radius: calc(0.1vw + 0.1vh);
+  font-size: calc(0.8vh + 0.8vw);
+  font-weight: 600;
+  text-align: center;
+  height: 40vh;
+  width: 11vw;
+}
+
+.promise-board {
+  height: 30vh;
+  margin: 0 2vw 0 0;
+  border: calc(0.1vh + 0.1vw) solid #5d94ff;
+  border-radius: calc(0.1vw + 0.1vh);
+}

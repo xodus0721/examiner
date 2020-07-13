@@ -16,16 +16,20 @@
 .sat {
   color: #5c8ef4;
 }
+.today {
+  color: #acc018;
+}
 
 .box {
   margin: 0.2vw;
-  border: 3px solid #5d94ff;
-  border-radius: 15px;
-  font-family: "Jua", sans-serif;
-  font-size: calc(1.2vw + 1.2vh);
+  border: calc(0.1vh + 0.1vw) solid #5d94ff;
+  border-radius: calc(0.3vw + 0.3vh);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: calc(1vw + 1vh);
 }
 
 .box-margin {
-  margin-right: 0.2vw;
+  margin-right: 0.3vw;
   float: right;
 }
