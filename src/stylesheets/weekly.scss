@@ -43,8 +43,10 @@
 }
 
 .promise-board {
+  width: 79vw;
   height: 30vh;
   margin: 0 2vw 0 0;
   border: calc(0.1vh + 0.1vw) solid #5d94ff;
+  outline: 0;
   border-radius: calc(0.1vw + 0.1vh);
 }
