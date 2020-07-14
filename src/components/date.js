@@ -7,9 +7,9 @@ const Date = (props) => {
     date,
     thisMonth,
     weekend,
-    today,
+    todays,
     month,
-    todaysMonth,
+    year,
   } = props.info;
 
   return (
@@ -19,10 +19,14 @@ const Date = (props) => {
           "box-margin " +
           (thisMonth === 1 ? "" : "not-this-month ") +
           (weekend === "Sun" ? " sun " : weekend === "Sat" ? " sat " : "") +
-          (todaysMonth === month ? (today === date ? "today " : "") : "")
+          (todays[2] === year && todays[1] === month
+            ? todays[0] === date
+              ? "today "
+              : ""
+            : "")
         }
       >
-        {date}
+        {String(date)}
       </div>
       <div className="box-margin">{icon}</div>
     </div>

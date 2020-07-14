@@ -19,7 +19,9 @@ const Weekly = () => {
           <Planner weekName={weekNames[6]} />
         </div>
         <div className="weekly-header">이것만큼은 꼭하자</div>
-        <textarea className="promise-board"></textarea>
+        <div className="promise-board">
+          <textarea className="promise-box"></textarea>
+        </div>
       </div>
     </div>
   );
