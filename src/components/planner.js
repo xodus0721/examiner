@@ -1,11 +1,11 @@
 import React from "react";
 
 const Planner = (prop) => {
-  const { weekName, content } = prop;
+  const { weekName } = prop;
   return (
     <div className="plan-template">
-      <div>{weekName}</div>
-      <div>{content}</div>
+      <div className="plan-header">{weekName}</div>
+      <textarea className="content-box"></textarea>
     </div>
   );
 };

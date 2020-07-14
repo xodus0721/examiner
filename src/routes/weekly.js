@@ -10,17 +10,16 @@ const Weekly = () => {
       <div className="planner-container">
         <div className="weekly-header">주말 계획표</div>
         <div className="planner-board">
-          <Planner weekName={weekNames[0]} content="" />
-          <Planner weekName={weekNames[1]} content="" />
-          <Planner weekName={weekNames[2]} content="" />
-          <Planner weekName={weekNames[3]} content="" />
-          <Planner weekName={weekNames[4]} content="" />
-          <Planner weekName={weekNames[5]} content="" />
-          <Planner weekName={weekNames[6]} content="" />
+          <Planner weekName={weekNames[0]} />
+          <Planner weekName={weekNames[1]} />
+          <Planner weekName={weekNames[2]} />
+          <Planner weekName={weekNames[3]} />
+          <Planner weekName={weekNames[4]} />
+          <Planner weekName={weekNames[5]} />
+          <Planner weekName={weekNames[6]} />
         </div>
         <div className="weekly-header">이것만큼은 꼭하자</div>
-        <div className="promise-board">
-        </div>
+        <div className="promise-board"></div>
       </div>
     </div>
   );

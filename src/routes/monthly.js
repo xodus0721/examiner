@@ -21,26 +21,31 @@ const monthNames = [
 ];
 const weekNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
-let year = d.getFullYear();
 const today = d.getDate();
 const todaysMonth = d.getMonth() + 1;
 
 let monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-switch (!(year % (year % 25 ? 4 : 16))) {
-  case true:
-    monthDay[1] = 29;
-    break;
-  default:
-    monthDay[1] = 28;
-}
 
 const getNowMonth = () => {
   let tempMonth = d.getMonth() + 1;
   return tempMonth;
 };
 
-const bufMaker = (month) => {
+const getNowYear = () => {
+  let tempyear = d.getFullYear();
+
+  switch (!(tempyear % (tempyear % 25 ? 4 : 16))) {
+    case true:
+      monthDay[1] = 29;
+      break;
+    default:
+      monthDay[1] = 28;
+  }
+
+  return tempyear;
+};
+
+const bufMaker = (month, year) => {
   let tempBuf = [];
 
   let firstDay = new Date(
@@ -50,7 +55,10 @@ const bufMaker = (month) => {
   for (let i = 0; i < firstDay; i++)
     tempBuf[i] = {
       id: i + 1,
-      date: monthDay[month - 2] - firstDay + i + 1,
+      date:
+        month !== 1
+          ? monthDay[month - 2] - firstDay + i + 1
+          : monthDay[11] - firstDay + i + 1,
       icon: "",
       thisMonth: 0,
       weekend: "",
@@ -94,28 +102,38 @@ const bufMaker = (month) => {
 
 // 함수형 컴포넌트 내부
 const Monthly = ({ schedules, onInsert, onRemove }) => {
+  const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [buf, setBuf] = useState([]);
   const [monthName, setMonthName] = useState("");
 
   // 컴포넌트가 마운트될때 실행
   useEffect(() => {
+    setYear(getNowYear());
     setMonth(getNowMonth());
-    setBuf(bufMaker(getNowMonth()));
+    setBuf(bufMaker(getNowMonth(), getNowYear()));
     setMonthName(monthNames[d.getMonth()]);
   }, []);
 
   useEffect(() => {
-    setBuf(bufMaker(month));
+    setBuf(bufMaker(month, year));
     setMonthName(monthNames[month - 1]);
-  }, [month]);
+  }, [month, year]);
 
   const monthIncrease = () => {
-    setMonth(month + 1);
+    if (month !== 12) setMonth(month + 1);
+    else {
+      setMonth(1);
+      setYear(year + 1);
+    }
   };
 
   const monthDecrease = () => {
-    setMonth(month - 1);
+    if (month !== 1) setMonth(month - 1);
+    else {
+      setMonth(12);
+      setYear(year - 1);
+    }
   };
 
   return (
